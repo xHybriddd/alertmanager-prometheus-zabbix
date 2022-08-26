@@ -1,4 +1,4 @@
-# Python_Prometheus_AlertsToZabbix
+# Alertmanager (Prometheus) to Zabbix
 Application to forward Prometheus alerts from Alertmanager to Zabbix with dynamic trigger name and severity.
 
 App is creating Zabbix triggers when Prometheus alert is firing with rendered labels values.
