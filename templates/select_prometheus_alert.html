@@ -1,0 +1,57 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #e8f1f9; }
+		ul { display: flex; }
+	</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row pb-5">
+    <div class="col-lg-10 mx-lg-auto">
+
+      <h1 class="pt-5 pb-2">Prometheus Alert</h1>
+
+      <p class="lead alert alert-success">Select PrometheusAlert to delete.</p>
+
+	  <p class="lead alert alert-warning">This is a list of all PrometheusAlerts from PrometheusAlertRule: <strong>{{ rule }}</strong>.</p>
+
+	  <p class="ml-4"><a href="{{ url_for('menu') }}">Return to the menu.</a></p>
+	  <p class="ml-4"><a href="{{ url_for('select_prometheus_rule') }}">Return to the list of PrometheusRules.</a></p>
+
+	  <!-- start form - not using WTForms here -->
+	  <form method="POST" id="form2" action="{{ url_for('delete_prometheus_alert', table=rule ) }}">
+
+		<table class="table">
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>Status</th>
+				<th>Timestemp</th>
+			</tr>
+
+			<!-- here is a for-loop to give us all the socks -->
+			{% for alert in alerts %}
+			<tr>
+				<td class="center-align"><input type="radio" name="id" value="{{ alert[0] }}" required></td>
+				<td>{{ alert[0] }}</td>
+				<td>{{ alert[1] }}</td>
+				<td>{{ alert[2] }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<div class="form-group">
+	        <input class="btn btn-success" type="submit" value="Submit Choice">
+        </div>
+
+		</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

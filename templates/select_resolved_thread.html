@@ -1,0 +1,57 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #e8f1f9; }
+		ul { display: flex; }
+	</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row pb-5">
+    <div class="col-lg-10 mx-lg-auto">
+
+      <h1 class="pt-5 pb-2">Application Threads - Resolved</h1>
+
+      <p class="lead alert alert-success">Select thread to delete.</p>
+
+
+	  <p class="ml-4"><a href="{{ url_for('menu') }}">Return to the menu.</a></p>
+
+	  <!-- start form - not using WTForms here -->
+	  <form method="POST" id="form2" action="{{ url_for('delete_threads', table='resolvedThreads' ) }}">
+
+		<table class="table">
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>Status</th>
+				<th>PrometheusAlertRule</th>
+				<th>PrometheusAlertId</th>
+			</tr>
+
+			<!-- here is a for-loop to give us all the socks -->
+			{% for thread in threads %}
+			<tr>
+				<td class="center-align"><input type="radio" name="id" value="{{ thread[0] }}" required></td>
+				<td>{{ thread[0] }}</td>
+				<td>{{ thread[1] }}</td>
+				<td>{{ thread[2] }}</td>
+				<td>{{ thread[3] }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<div class="form-group">
+	        <input class="btn btn-success" type="submit" value="Submit Choice">
+        </div>
+
+		</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

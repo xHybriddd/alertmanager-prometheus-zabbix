@@ -1,0 +1,24 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #e8f1f9; }
+	</style>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+      <h1 class="pt-5 pb-2">Prometheus AlertManager</h1>
+      <p>From this page you can delete all data that is in the internal database. All without having to connect to this database.</p>
+      <br>
+      <p>- You can <a href="{{ url_for( 'select_firing_thread' ) }}">select a <strong>firing</strong> application thread from <strong>database</strong> to delete</a>.</p>
+      <p>- You can <a href="{{ url_for( 'select_resolved_thread' ) }}">select a <strong>resolved</strong> application thread from <strong>database</strong> to delete</a>.</p>
+      <p>- You can <a href="{{ url_for( 'select_prometheus_rule' ) }}">select a <strong>prometheusAlert</strong> from <strong>database</strong> to delete</a>.</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #e8f1f9; }
+	</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row pb-5">
+    <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+
+      <h1 class="pt-5 pb-2">Prometheus AlertRules</h1>
+
+	  <p class="lead alert alert-success">Select Prometheus AlertRule to show all coresponded PrometheusAlerts</p>
+
+		<table class="table">
+			<!-- here is a for-loop to give us all the socks -->
+			{% for row in rows %}
+			<tr>
+				<td><a href="{{ url_for( 'select_prometheus_alert', rule=row[0] ) }}">{{ row[0] }}</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

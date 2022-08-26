@@ -1,0 +1,61 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #e8f1f9; }
+		ul { display: flex; }
+	</style>
+{% endblock %}
+
+
+{% block title %}
+Select a Sock
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row pb-5">
+    <div class="col-lg-10 mx-lg-auto">
+
+      <h1 class="pt-5 pb-2">Select a Prometheus Alert</h1>
+
+      <p class="lead alert alert-success">Select one or more Prometheus Alerts to delete.</p>
+
+
+	  <p class="ml-4"><a href="{{ url_for('menu') }}">Return to the index.</a></p>
+
+	  <!-- start form - not using WTForms here -->
+	  <form method="POST" id="form2" action="{{ url_for('edit_or_delete') }}">
+
+		<table class="table">
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>Status</th>
+				<th>Timestemp</th>
+			</tr>
+
+			<!-- here is a for-loop to give us all the socks -->
+			{% for sock in socks %}
+			<tr>
+				<td class="center-align"><input type="radio" name="id" value="{{ sock[0] }}" required></td>
+				<td>{{ sock[0] }}</td>
+				<td>{{ sock[1] }}</td>
+				<td>{{ sock[2] }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<div class="form-group">
+	        <input class="btn btn-success" type="submit" value="Submit Choice">
+        </div>
+
+		</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
