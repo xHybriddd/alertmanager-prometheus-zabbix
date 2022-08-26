@@ -1,4 +1,4 @@
-# Python_Prometheus_AlertsToZabbix
+# Alertmanager (Prometheus) to Zabbix
 Application to forward Prometheus alerts from Alertmanager to Zabbix with dynamic trigger name and severity.
 
 Application uses a sqlite3 database with storage in /databases/ folder (could be a PVC of Kubernetes)
